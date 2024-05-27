@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video id="video-background" autoplay loop muted>
+        <source src="media/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <header>
+        <div class="logo">
+            <img src="media/logo.png" alt="Logo" />
+        </div>
+        <div class="header-right">
+            <span class="slogan">Every piece of plastic has a story, let's make it a tale of conservation.</span>
+            <button id="logout-button">Log Out</button>
+        </div>
+    </header>
+
+    <div class="profile-container">
+        <h2>Your Profile</h2>
+        <p><strong>First Name:</strong> <span id="profile-first-name"></span></p>
+        <p><strong>Last Name:</strong> <span id="profile-last-name"></span></p>
+        <p><strong>Email Address:</strong> <span id="profile-email"></span></p>
+        <p><strong>Sex:</strong> <span id="profile-sex"></span></p>
+        <p><strong>Why I Support This Campaign:</strong> <span id="profile-why-support"></span></p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('profile-first-name').textContent = localStorage.getItem('first-name');
+            document.getElementById('profile-last-name').textContent = localStorage.getItem('last-name');
+            document.getElementById('profile-email').textContent = localStorage.getItem('email');
+            document.getElementById('profile-sex').textContent = localStorage.getItem('sex');
+            document.getElementById('profile-why-support').textContent = localStorage.getItem('why-support');
+        });
+
+        document.getElementById('logout-button').addEventListener('click', function() {
+            localStorage.clear();
+            alert('Logged out successfully!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

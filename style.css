@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    color: #ffffff;
+}
+
+h2 {
+    color: #00aaff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    z-index: 2;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.slogan {
+    margin-right: 20px;
+    font-size: 1em;
+}
+
+#logout-button {
+    background-color: #00aaff;
+    color: #ffffff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logout-button:hover {
+    background-color: #0088cc;
+}
+
+.signup-container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+button {
+    background-color: #00aaff;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0088cc;
+}
+
+.required {
+    color: #ff4d4d;
+}
+
+.required-message {
+    color: #ff4d4d;
+    font-size: 12px;
+}
+
+.profile-container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.profile-container p {
+    margin: 10px 0;
+}
+
+.profile-container span {
+    color: #00aaff;
+}
+
+#video-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    filter: brightness(0.5);
+}
+
+.signup-container, .profile-container {
+    position: relative;
+    z-index: 1;
+}

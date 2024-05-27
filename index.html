@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clean Seas, Bright Futures</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <video id="video-background" autoplay loop muted>
+    <source src="media/background.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <header>
+    <div class="logo">
+      <img src="media/logo.png" alt="Logo" />
+    </div>
+    <div class="header-right">
+      <span class="slogan">Every piece of plastic has a story, let's make it a tale of conservation.</span>
+      <button id="logout-button">Log Out</button>
+    </div>
+  </header>
+
+  <div class="signup-container" id="sup">
+    <h2>Sign up for Clean Seas, Bright Futures today</h2>
+    <p>Become a member and join the Movement for a cleaner ocean and brighter futures!</p>
+    <form id="signup-form">
+      <label for="first-name">First Name <span class="required">*</span></label>
+      <input type="text" id="first-name" name="first-name" required>
+      <div id="first-name-error" class="required-message"></div>
+
+      <label for="last-name">Last Name <span class="required">*</span></label>
+      <input type="text" id="last-name" name="last-name" required>
+      <div id="last-name-error" class="required-message"></div>
+
+      <label for="email">Email Address <span class="required">*</span></label>
+      <input type="email" id="email" name="email" required>
+      <div id="email-error" class="required-message"></div>
+
+      <label for="password">Password <span class="required">*</span></label>
+      <input type="password" id="password" name="password" required>
+      <div id="password-error" class="required-message"></div>
+
+      <label for="sex">Sex <span class="required">*</span></label>
+      <input type="radio" id="male" name="sex" value="male" required> Male
+      <input type="radio" id="female" name="sex" value="female" required> Female
+      <input type="radio" id="prefer-not-to-say" name="sex" value="prefer-not-to-say" required> Prefer not to say
+      <div id="sex-error" class="required-message"></div>
+
+      <label for="contact-number">Contact Number</label>
+      <input type="number" id="contact-number" name="contact-number"> <br> <br>
+
+      <label for="why-support">Why I Support This Campaign <span class="required">*</span></label>
+      <textarea id="why-support" name="why-support" required></textarea>
+      <div id="why-support-error" class="required-message"></div>
+
+      <button type="submit" id="signup-button">Sign Up</button>
+    </form>
+    <p>By signing up, you agree to our Terms of Service and our Privacy Policy.</p>
+  </div>
+
+  <script>
+    const signupForm = document.getElementById('signup-form');
+
+    signupForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      let isValid = true;
+
+      document.querySelectorAll('.required-message').forEach(function(element) {
+        element.textContent = '';
+      });
+
+      const requiredFields = ['first-name', 'last-name', 'email', 'password', 'why-support'];
+      requiredFields.forEach(function(field) {
+        const input = document.getElementById(field);
+        if (!input.value) {
+          isValid = false;
+          document.getElementById(field + '-error').textContent = 'required';
+        }
+      });
+
+      const sexRadioButtons = document.querySelectorAll('input[name="sex"]');
+      let sexSelected = false;
+      sexRadioButtons.forEach(function(radio) {
+        if (radio.checked) {
+          sexSelected = true;
+        }
+      });
+
+      if (!sexSelected) {
+        isValid = false;
+        document.getElementById('sex-error').textContent = 'required';
+      }
+
+      if (isValid) {
+        localStorage.setItem('first-name', document.getElementById('first-name').value);
+        localStorage.setItem('last-name', document.getElementById('last-name').value);
+        localStorage.setItem('email', document.getElementById('email').value);
+        localStorage.setItem('password', document.getElementById('password').value);
+        localStorage.setItem('sex', document.querySelector('input[name="sex"]:checked').value);
+        localStorage.setItem('contact-number', document.getElementById('contact-number').value);
+        localStorage.setItem('why-support', document.getElementById('why-support').value);
+
+        window.location.href = 'profile.html';
+      }
+    });
+
+    document.getElementById('logout-button').addEventListener('click', function() {
+      localStorage.clear();
+      alert('Logged out successfully!');
+    });
+  </script>
+</body>
+</html>
